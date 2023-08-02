@@ -1,0 +1,226 @@
+@charset "ISO-8859-1";
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body {
+    background: url('/images/bgwall.webp') no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+header {
+    background-color: #0060bf; 
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end; 
+}
+.icon 
+{
+	 display: flex;
+    align-items: center;
+}
+.icon h2{
+     position: absolute;
+     left: 5%;
+}
+.navibar {
+    list-style: none;
+    display: flex; 
+     
+}
+
+.navibar a {
+    text-decoration: none;
+    padding: 10px 25px;
+    margin: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 500;
+    color:black;  
+    transition: .5s;  
+    
+}
+
+.navibar a:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+    transition: background-color 0.2s;
+} 
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f7f7f7; /* Light gray background */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+.popup h2 {
+    margin-bottom: 10px;
+    color: #0000ff; /* Dark gray text color */
+}
+
+.popup p {
+    color: #000000; /* Gray text color */
+    margin-bottom: 15px;
+}
+
+.popup button {
+    margin-right: 30px;
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: #ffffff; /* White text color */
+    background-color: #0060bf; /* Dark blue background */
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.popup button:hover {
+    background-color: #004080; /* Slightly darker blue background on hover */
+    color: #ffffff; /* White text color on hover */
+}
+
+.chat-box {
+    background-color:transparent;
+    border-radius: 10px;
+    box-shadow: 5px 5px 30px #c0c0c0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    max-width: 400px;
+    margin: 20px auto;
+    margin-right:180px;
+}
+.chat-box:hover {
+    box-shadow: 5px 5px 50px #e0e0e0; /* Updated box shadow on hover */
+}
+.chat-header {
+    background-color: #0060bf;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.message {
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px 0;
+    max-width: 80%;
+}
+
+.received {
+    background-color: #efefef;
+    align-self: flex-start;
+}
+
+.sent {
+    background-color: #002e5b;
+    color: white;
+    align-self: flex-end;
+}
+
+.message-content {
+    word-wrap: break-word;
+}
+
+.message-time {
+    font-size: 0.8rem;
+    color: #00b300;
+}
+
+.chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+   
+}
+
+textarea {
+    flex-grow: 1;
+    resize: none;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+     background-color: transparent;
+}
+
+button {
+    background-color: #0060bf;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+
+
+.footer {
+    background-color: #0060bf;
+    text-align: center;
+    padding: 1rem 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer-content {
+    color: #000000;
+}
+
+.footer-content a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-content a:hover {
+    color: #004a9a;
+}
+
+.icons {
+    display: flex;
+    justify-content:center;
+    text-align:center;
+    margin-top: 5px; 
+}
+
+.icons a {
+    color: #ffffff;
+    display: inline-flex;
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    border: 2px solid blue;
+    border-radius: 50%;
+    margin-left: 10px; 
+    align-items: center;
+    justify-content: center;
+    font-size: 20px; 
+    transition: color 0.2s;
+}
+
+.icons a:hover {
+    color: #ff0000; 
+}

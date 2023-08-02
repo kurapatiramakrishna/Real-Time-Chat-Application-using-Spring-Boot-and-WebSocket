@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+ <link rel="stylesheet" href="/chatHomePage.css">
+ <script src="/chatHomePage.js"></script>
+ <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+ <!-- Add this code within the <head> section of your HTML -->
+<script>
+//Function to get user details after login or signup
+function getUserDetails() {
+    // Assuming you have a way to obtain the username after the user logs in or signs up
+    loggedInUsername = getLoggedInUsername(); // Replace with actual logic to get the username
+    recipientUsername = getRecipientUsername(); // Replace with actual logic to get the recipient's username
+}
+
+// Call getUserDetails() after the user logs in or signs up
+getUserDetails();
+
+
+
+// Establish a WebSocket connection
+const socket = new WebSocket('ws://localhost:8080/chatHomePage');
+
+// Handle incoming messages
+socket.addEventListener('message', (event) => {
+    const message = JSON.parse(event.data);
+    displayMessage(message);
+});
+
+//Send a message
+document.getElementById('send-button').addEventListener('click', () => {
+    const messageInput = document.getElementById('message-input');
+    const messageContent = messageInput.value;
+    if (messageContent.trim() !== '') {
+        const message = {
+            content: messageContent,
+            sender: loggedInUsername,
+            receiver: recipientUsername
+        };
+        socket.send(JSON.stringify(message));
+        messageInput.value = '';
+    }
+});
+
+// Display the message in the chat
+function displayMessage(message) {
+    const messageContainer = document.createElement('div');
+    messageContainer.classList.add('message', message.sender === 'current_user' ? 'sent' : 'received');
+    
+    const messageContent = document.createElement('div');
+    messageContent.classList.add('message-content');
+    messageContent.textContent = message.content;
+    
+    const messageTime = document.createElement('div');
+    messageTime.classList.add('message-time');
+    messageTime.textContent = message.timestamp;
+    
+    messageContainer.appendChild(messageContent);
+    messageContainer.appendChild(messageTime);
+    
+    document.querySelector('.chat-messages').appendChild(messageContainer);
+}
+
+
+
+
+//Warning popup using JavaScript
+function showPopup() {
+    console.log("showPopup function called");
+    // Rest of your code...
+}
+function closePopup() {
+    document.getElementById("warning-popup").style.display = "none";
+}
+function navigateToSignup() {
+    window.location.href = "/signup";
+}
+
+function navigateToLogin() {
+    window.location.href = "/login"; 
+}
+
+function showPopup() {
+    const visitedBefore = localStorage.getItem("visitedBefore");
+
+    if (!visitedBefore) {
+        localStorage.setItem("visitedBefore", "true");
+        setTimeout(function() {
+            document.getElementById("warning-popup").style.display = "block";
+        }, 2000);
+    }
+}
+
+// Call the showPopup function when the page loads
+window.addEventListener("load", showPopup);
+</script>
+
+
+</head>
+<body>
+ <header>
+    <div class="icon">
+       <h2><b>Chat Bot💬</b></h2>
+    </div>
+    
+       <div class="navibar">
+    <a href="#" onclick="return loadHomePage();"><b>Home</b></a>
+    <a href="#"><b>ContactUs</b></a>
+    <a href="/help"><b>Help?</b></a>
+    <a href="/signup"><b>SignUp</b></a>
+     <a href="/login"><b>Login</b></a>
+    
+</div>
+    </header>
+    <!-- warning popup -->
+ <div class="popup" id="warning-popup">
+    <h2>Welcome to the <b>Chat Bot💬</b></h2>
+    <p>Sign up to start chatting with others.<br>If you are already logged in, click on Login.</p>
+    <button onclick="navigateToSignup()">Sign Up</button>
+    <button onclick="navigateToLogin()">Login</button>
+</div>
+  
+  
+ <div class="chat-box">
+    <div class="chat-header">
+        <h3>Chat Room</h3>
+    </div>
+    <div class="chat-messages">
+        <div class="message received">
+            <div class="message-content"></div>
+            <div class="message-time"></div>
+        </div>
+        <div class="message sent">
+            <div class="message-content"></div>
+            <div class="message-time"></div>
+        </div>
+        <!-- More chat messages go here -->
+    </div>
+    <div class="chat-input">
+        <textarea placeholder="Type your message..."></textarea>
+          <button id="send-button">Send</button>
+    </div>
+</div>
+
+   <footer class="footer">
+    <div class="footer-content">
+        <p>&copy; 2023 Chat Bot💬. All rights reserved.</p>
+        <p>Version: 1.0.0</p>
+        <p>Contact: support@chatbot.com</p>
+        <div class="icons">
+    <a href="https://www.linkedin.com/"><i class='bx bxl-linkedin-square'></i></a>
+    <a href="https://www.instagram.com/"><i class='bx bxl-instagram'></i></a>
+    <a href="https://www.twitter.com/"><i class='bx bxl-twitter'></i></a>
+</div>
+
+    </div>
+   
+</footer>
+    
+</body>
+</html>

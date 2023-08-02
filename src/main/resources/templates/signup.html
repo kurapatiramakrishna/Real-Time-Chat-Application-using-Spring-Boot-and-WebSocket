@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Sign Up Home Page</title>
+<link rel="stylesheet" href="/signup.css">
+</head>
+<body>
+<div class="error-message" th:if="${errorMessage}">
+    <p th:text="${errorMessage}"></p>
+</div>
+<div class="box">
+    <span class="borderLine"></span>
+    <form action="/adduser" method="post">
+        <h2>SignUp</h2>
+        <div class="inputBox">
+            <input type="text" required="required" name="FirstName">
+            <label for="firstName">First Name</label>
+            <i></i>
+        </div>
+        <div class="inputBox">
+            <input type="text" required="required" name="LastName">
+            <label for="lastName">Last Name</label>
+            <i></i>
+        </div>
+        <div class="inputBox">
+            <input type="text" required="required" name="Email">
+            <label for="Username">Email</label>
+            <i></i>
+        </div>
+        <div class="inputBox">
+            <input type="password" required="required" name="password">
+            <label for="Password">Password</label>
+            <i></i>
+        </div>
+        <input type="submit" value="SignUp">
+        <div class="links">
+            <a href="/login">Already a member login ?</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

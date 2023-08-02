@@ -1,0 +1,225 @@
+@charset "ISO-8859-1";
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('images/wolf1.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    left: 15%;
+}
+
+.box {
+    position: relative;
+    width: 380px;
+    height: 540px; 
+    background: #1c1c1c;
+    border-radius: 8px;
+    overflow: hidden; 
+}
+
+.box::before,
+.box::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 338px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, transparent, #ff4545, #45f3ff);
+    z-index: 1;
+    animation: animate 6s linear infinite; /* Adjust the animation duration to 6 seconds */
+    transform-origin: bottom right;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+  
+    50% {
+        transform: rotate(180deg); /* Rotate to 180 degrees for the second color (blue) */
+    }
+  
+    100% {
+        transform: rotate(360deg); /* Rotate to 360 degrees for the last color (blue) */
+    }
+}
+
+.box::after {
+    position: relative;
+    width: 380px;
+    height: 420px;
+    background: #1c1c1c;
+    border-radius: 8px;
+    overflow: hidden;
+    animation-delay: -3s; /* Delay the second color animation */
+}
+
+.borderLine {
+    position: absolute;
+    top: 0;
+    inset: 0;
+}
+
+.borderLine::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 338px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, transparent, #45f3ff, #ff4545);
+    z-index: 1;
+    animation: animate 6s linear infinite; /* Adjust the animation duration to 6 seconds */
+    transform-origin: bottom right;
+}
+
+.borderLine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 338px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, transparent, #ff4545, #45f3ff);
+    z-index: 1;
+    animation: animate 6s linear infinite; /* Adjust the animation duration to 6 seconds */
+    transform-origin: bottom right;
+    animation-delay: -3s; /* Delay the second color animation */
+}
+
+
+
+
+.box form {
+    position: absolute;
+    inset: 4px;
+    background: #222;
+    padding: 50px 40px;
+    border-radius: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.box form h2 {
+    
+    color: #ea0909;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-size: 1.5em;
+}
+
+.box form .inputBox {
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    color: #23242a;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 10;
+    border: none;
+}
+
+.box form .inputBox label {
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    pointer-events: none;
+    color: #8f8f8f;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+    transition: 0.3s;
+}
+
+.box form .inputBox input {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #4d4b4b;
+    color: #fff;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.3s;
+}
+
+.box form .inputBox input:focus,
+.box form .inputBox input:valid {
+    border-bottom-color: #de0f0f; /* Change the bottom border color on focus or valid input */
+}
+.box form .inputBox:nth-child(1) label {
+    top: 60px;
+}
+
+.box form .inputBox:nth-child(2) label {
+    top: 10px;
+}
+
+.box form .inputBox input:focus + label,
+.box form .inputBox input:valid + label {
+    font-size: 0.8em;
+    transform: translateY(-24px);
+    color: #de0f0f; /* Change label color on focus or valid input */
+}
+.box form .links {
+
+  letter-spacing: 1px;  
+  display: flex;
+    justify-content: space-between;
+}
+
+.box form .links a {
+    margin: 10px 0;
+    margin-left:50px;
+    font-size: 0.75em;
+    color: #de0f0f;
+    text-decoration: none;
+}
+
+.box form .links a:hover,
+.box form .links a:nth-child(2) 
+{
+    color: #f40707;
+}
+.box form input[type="submit"] 
+{
+    border: none;
+    outline: none;
+    padding: 8px 25px;
+    background: #de0f0f;
+    cursor: pointer;
+    font-size: 0.9em;
+    border-radius: 4px;
+    font-weight: 600;
+    width: 100px;
+    margin-top: 30px;
+    margin-left: 90px;
+    /* Add a smooth transition effect for the background color */
+}
+
+.box form input[type="submit"]:hover 
+{
+    background-color: #f40707; /* Change the background color on hover */
+}
